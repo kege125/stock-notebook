@@ -15,3 +15,4 @@ $('#new').onclick=()=>{let f=$('#newF');f.reset();f.querySelector('[name="quanti
 $('#newF').onsubmit=e=>{e.preventDefault();let f=new FormData(e.target),p=N(f.get('price')),q=N(f.get('quantity'));D.stocks.push({id:id(),name:f.get('name').trim(),current:p,trades:[{id:id(),type:'buy',price:p,quantity:q,fee:p*q*.0001,date:f.get('date'),time:f.get('time')}]});store();close('newM');render()};$('#tradeF').onsubmit=e=>{e.preventDefault();let f=new FormData(e.target),s=D.stocks.find(x=>x.id===pick),x=calc(s),p=N(f.get('price')),q=N(f.get('quantity'));if(type==='sell'&&q>x.q)return alert('卖出数量不能超过当前持仓。');s.trades.push({id:id(),type,price:p,quantity:q,fee:p*q*.0001,date:f.get('date'),time:f.get('time')});store();close('tradeM');render();detail(s.id)};render();
 </script></body></html>
 
+
